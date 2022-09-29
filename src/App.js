@@ -20,7 +20,9 @@ function App() {
     const checkWallet = async () => {
       const address = await checkIfWalletIsConnected()
       setWalletAddress(address)
-      setLoading(false)
+      setTimeout(()=>{
+        setLoading(false)
+      }, 2000)
     }
     checkWallet()
   })
