@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './App.css'
+import Header from './components/Header/Header';
+
+const {hasMetamask, requestAccount} = require('./provider/Web3')
 
 function App() {
+
+  const [walletAddress, setWalletAddress] = useState('')
+  
+  useEffect(() => {
+    const getAccount = async () => {
+      const address = await requestAccount()
+      console.log(address)
+      setWalletAddress(address)
+    }
+    getAccount()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header wallet={walletAddress}/>
     </div>
   );
 }

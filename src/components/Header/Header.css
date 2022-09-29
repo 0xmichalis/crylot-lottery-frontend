@@ -1,0 +1,8 @@
+header{
+    display: flex;
+    height: 5vh;
+    padding: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 2em;
+}
