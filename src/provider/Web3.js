@@ -27,4 +27,4 @@ export const checkIfWalletIsConnected = async () => {
         return accounts[0];
     }
     return ''
-  }
+}
