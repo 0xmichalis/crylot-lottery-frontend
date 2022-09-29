@@ -1,7 +1,27 @@
 *{padding: 0;margin: 0;}
 :root{
-  
+  --primary: #9C52F0;
+  --p-dark: #4d3a64;
+  --p-light: #7F21EB;
+  --dark: #161316;
+  --light: #E2E2E2;
 }
 body{
   width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, var(--dark), var(--p-dark));
+  background-size: 400% 400%;
+  animation: updown 5s ease infinite;
+}
+
+@keyframes updown {
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
 }
