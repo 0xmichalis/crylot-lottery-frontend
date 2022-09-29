@@ -1,25 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import './App.css'
 import Header from './components/Header/Header';
+import Loader from './components/Loader/Loader';
+import Login from './components/Login/Login';
 
-const {hasMetamask, requestAccount} = require('./provider/Web3')
+const {requestAccount, checkIfWalletIsConnected} = require('./provider/Web3')
 
 function App() {
 
+  const [loading, setLoading] = useState(true)
   const [walletAddress, setWalletAddress] = useState('')
   
-  useEffect(() => {
-    const getAccount = async () => {
-      const address = await requestAccount()
-      console.log(address)
+  const getAccount = async () => {
+    const address = await requestAccount()
+    setWalletAddress(address)
+  }
+
+  useEffect(()=>{
+    const checkWallet = async () => {
+      const address = await checkIfWalletIsConnected()
       setWalletAddress(address)
+      setLoading(false)
     }
-    getAccount()
-  }, [])
+    checkWallet()
+  })
+
+  if(loading){
+    return(
+      <Loader width={"40%"} />
+    )
+  }
 
   return (
     <div>
-      <Header wallet={walletAddress}/>
+      {
+        walletAddress ? <Header wallet={walletAddress}/>
+        : <Login action={getAccount}/>
+      }
     </div>
   );
 }
