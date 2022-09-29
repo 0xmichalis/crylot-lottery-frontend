@@ -1,9 +1,3 @@
-header{
-    display: flex;
-    height: 5vh;
-    padding: 1rem 3rem;
-    justify-content: flex-end;
-    align-items: center;
+.address{
     font-size: 2.5em;
-    color: var(--primary);
 }

@@ -5,7 +5,19 @@
   --p-light: #7F21EB;
   --dark: #161316;
   --light: #E2E2E2;
+
+  --radius:16px
 }
+
+header{
+  display: flex;
+  height: 8vh;
+  padding: 1rem 3rem;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--primary);
+}
+
 body{
   width: 100vw;
   min-height: 100vh;
