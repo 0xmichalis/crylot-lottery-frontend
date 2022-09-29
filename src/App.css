@@ -6,7 +6,9 @@
   --dark: #161316;
   --light: #E2E2E2;
 
-  --radius:16px
+  --radius:16px;
+
+  --animate-duration: .6s
 }
 
 header{
