@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
 import './BetContainer.css'
 import '../InfoContainer/InfoContainer.css'
+import '../../Login/Login.css'
 import Loader from '../../Loader/Loader'
 import Categories from '../Categories/Categories';
 import Input from '../Input/Input';
@@ -40,6 +41,8 @@ const BetContainer = ({wallet}) => {
                     inputMessage="Insert the amount to bet"
                     label={"Amount to bet"}
                     name="amount"/>
+
+                    <button>Bet!</button>
                 </form>
 
             </section>

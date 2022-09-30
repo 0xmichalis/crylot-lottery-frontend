@@ -19,7 +19,19 @@ form{
     align-items: center;
     flex-direction: column;
 }
-
+form button{
+    margin-top: 2vh;
+    width: 40%;
+    animation: border_color 2s ease infinite;
+}
+form button:hover{
+    -webkit-animation: 0;
+    background-color: var(--p-light);
+    color: var(--dark);
+    font-weight: bold;
+    box-shadow: var(--dark);
+    transition: all .2s;
+}
 
 @keyframes color {
     0%{
@@ -39,5 +51,44 @@ form{
     }
     100%{
         color: var(--primary);
+    }
+}
+
+@keyframes border_color {
+    0%{
+        color: var(--primary);
+        border-color: var(--primary);
+        box-shadow: 0px 0px 4px var(--primary),
+                0px 0px 8px var(--primary);
+    }
+    20%{
+        color: var(--red);
+        border-color: var(--red);
+        box-shadow: 0px 0px 4px var(--red),
+                0px 0px 8px var(--red);
+    }
+    40%{
+        color: var(--light-blue);
+        border-color: var(--light-blue);
+        box-shadow: 0px 0px 4px var(--light-blue),
+                0px 0px 8px var(--light-blue);
+    }
+    60%{
+        color: var(--pink);
+        border-color: var(--pink);
+        box-shadow: 0px 0px 4px var(--pink),
+                0px 0px 8px var(--pink);
+    }
+    80%{
+        color: var(--yellow);
+        border-color: var(--yellow);
+        box-shadow: 0px 0px 4px var(--yellow),
+                0px 0px 8px var(--yellow);
+    }
+    100%{
+        color: var(--primary);
+        border-color: var(--primary);
+        box-shadow: 0px 0px 4px var(--primary),
+        0px 0px 8px var(--primary);
     }
 }
