@@ -12,6 +12,13 @@
     animation: color 2s ease infinite;
 }
 
+form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 
 @keyframes color {

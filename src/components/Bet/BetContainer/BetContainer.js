@@ -4,6 +4,7 @@ import './BetContainer.css'
 import '../InfoContainer/InfoContainer.css'
 import Loader from '../../Loader/Loader'
 import Categories from '../Categories/Categories';
+import Input from '../Input/Input';
 
 const BetContainer = ({wallet}) => {
     
@@ -28,6 +29,17 @@ const BetContainer = ({wallet}) => {
                 categorieSelected={categorie}
                 selectCategorie={setCategorie}
                 />
+
+                <form>
+                    <Input
+                    type={categorie}
+                    label="Number"
+                    inputMessage="Insert a number between 0 ..."/>
+                    <Input
+                    inputMessage="Insert the amount to bet"
+                    label={"Amount to bet"}/>
+                </form>
+
             </section>
         </article>
     )
