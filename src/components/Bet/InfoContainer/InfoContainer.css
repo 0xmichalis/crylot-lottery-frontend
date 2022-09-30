@@ -16,7 +16,18 @@ hr{
     width: 100%;
     border-color: var(--light);
     animation: border_color 3s ease infinite;
-    margin: 1rem;
+    margin: 1rem .4rem;
+}
+
+@media (max-width: 600px){
+    .BetContainer{
+        width: 70vw;
+        font-size: .6em;
+        padding: .8rem;
+    }
+    hr{
+        margin: .6rem .2rem;
+    }
 }
 
 @keyframes border_color {

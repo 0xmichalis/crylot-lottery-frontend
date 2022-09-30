@@ -6,5 +6,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    --animate-duration: .6s
+}
+
+@media (max-width: 600px) {
+    .ContractInfo{
+        width: 45%;
+    }
 }
