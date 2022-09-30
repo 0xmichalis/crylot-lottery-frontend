@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
+import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
 import InfoContract from '../InfoContract/InfoContract';
 import './BetContainer.css'
 
@@ -14,19 +14,21 @@ const BetContainer = () => {
     useEffect(()=>{
         const getInfo = async () => {
             try {
-                const balance = await contractBalance()
+                const {contract, signer} = await getContract()
+
+                const balance = await contractBalance(contract)
                 setBalance(balance)
 
-                const minBet = await contractMinBet()
+                const minBet = await contractMinBet(contract)
                 setMinBet(minBet)
 
-                const maxBet = await contractMaxBet()
+                const maxBet = await contractMaxBet(contract)
                 setMaxBet(maxBet)
 
-                const totalBets = await contractTotalBets()
+                const totalBets = await contractTotalBets(contract)
                 setTotalBets(totalBets)
 
-                const userBets = await contractUserBets()
+                const userBets = await contractUserBets(contract, signer)
                 setUserBets(userBets)
             } catch (error) {
                 console.log(error)

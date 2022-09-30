@@ -1,23 +1,35 @@
 import {ethers} from 'ethers'
 import { ADDRESS, ABI } from '../config/ContractConfig';
+import { checkIfWalletIsConnected } from './web3';
 
-export const getContract = () => {
+export const getContract = async () => {
+    const wallet = await checkIfWalletIsConnected()
+    if(!wallet){
+        alert("wallet not connected")
+        return
+    }
+
     try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
 
+        if(!signer){
+            alert("Not connected")
+        }
+        console.log("hola")
+
         const contract = new ethers.Contract(ADDRESS, ABI, signer);
 
-        return contract;
+        return {contract, signer};
     } catch (error) {
         console.log(error)
         return false
     }
 }
 
-export const contractBalance = async () => {
+export const contractBalance = async (contract) => {
     try {
-        const contract = getContract()
+        // const {contract} = await getContract()
         const balance = await contract.getBalance()
 
         const formattedBalance = ethers.utils.formatEther(balance)
@@ -30,9 +42,9 @@ export const contractBalance = async () => {
     }
 }
 
-export const contractMinBet = async () => {
+export const contractMinBet = async (contract) => {
     try {
-        const contract = getContract()
+        // const {contract} = await getContract()
         const MinBet = await contract.getMinBet()
 
         const formattedMinBet = ethers.utils.formatEther(MinBet)
@@ -45,9 +57,9 @@ export const contractMinBet = async () => {
     }
 }
 
-export const contractMaxBet = async () => {
+export const contractMaxBet = async (contract) => {
     try {
-        const contract = getContract()
+        // const {contract} = await getContract()
         const MaxBet = await contract.getMaxBet()
 
         const formattedMaxBet = ethers.utils.formatEther(MaxBet)
@@ -60,9 +72,9 @@ export const contractMaxBet = async () => {
     }
 }
 
-export const contractTotalBets = async () => {
+export const contractTotalBets = async (contract) => {
     try {
-        const contract = getContract()
+        // const {contract} = await getContract()
         const TotalBets = await contract.getTotalBets()
 
         const formattedTotalBets = Number(ethers.utils.formatEther(TotalBets))
@@ -75,12 +87,10 @@ export const contractTotalBets = async () => {
     }
 }
 
-export const contractUserBets = async () => {
+export const contractUserBets = async (contract, signer) => {
     try {
-        const contract = getContract()
+        // const {contract, signer} = await getContract()
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
         const userAddress = await signer.getAddress()
         const UserBets = await contract.getUserBets(userAddress)
 
@@ -95,9 +105,9 @@ export const contractUserBets = async () => {
 }
 
 
-export const contractLastBet = async () => {
+export const contractLastBet = async (contract) => {
     try {
-        const contract = getContract()
+        // const {contract} = await getContract()
         const [_addr, amount, number] = await contract.getLastBet()
 
         const lastBet = {
