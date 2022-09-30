@@ -29,7 +29,6 @@ export const getContract = async () => {
 
 export const contractBalance = async (contract) => {
     try {
-        // const {contract} = await getContract()
         const balance = await contract.getBalance()
 
         const formattedBalance = ethers.utils.formatEther(balance)
@@ -44,7 +43,6 @@ export const contractBalance = async (contract) => {
 
 export const contractMinBet = async (contract) => {
     try {
-        // const {contract} = await getContract()
         const MinBet = await contract.getMinBet()
 
         const formattedMinBet = ethers.utils.formatEther(MinBet)
@@ -59,7 +57,6 @@ export const contractMinBet = async (contract) => {
 
 export const contractMaxBet = async (contract) => {
     try {
-        // const {contract} = await getContract()
         const MaxBet = await contract.getMaxBet()
 
         const formattedMaxBet = ethers.utils.formatEther(MaxBet)
@@ -74,7 +71,6 @@ export const contractMaxBet = async (contract) => {
 
 export const contractTotalBets = async (contract) => {
     try {
-        // const {contract} = await getContract()
         const TotalBets = await contract.getTotalBets()
 
         const formattedTotalBets = Number(ethers.utils.formatEther(TotalBets))
@@ -89,8 +85,6 @@ export const contractTotalBets = async (contract) => {
 
 export const contractUserBets = async (contract, signer) => {
     try {
-        // const {contract, signer} = await getContract()
-
         const userAddress = await signer.getAddress()
         const UserBets = await contract.getUserBets(userAddress)
 
@@ -122,7 +116,6 @@ export const contractUserFunds = async (contract, signer) => {
 
 export const contractLastBet = async (contract) => {
     try {
-        // const {contract} = await getContract()
         const [_addr, amount, number] = await contract.getLastBet()
 
         const lastBet = {
