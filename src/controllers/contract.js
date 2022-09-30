@@ -2,21 +2,32 @@ import {ethers} from 'ethers'
 import { ADDRESS, ABI } from '../config/ContractConfig';
 
 export const getContract = () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
 
-    const contract = new ethers.Contract(ADDRESS, ABI, signer);
+        const contract = new ethers.Contract(ADDRESS, ABI, signer);
 
-    return contract;
+        return contract;
+    } catch (error) {
+        console.log(error)
+        return false
+    }
 }
 
-export const contractBalance = async () => {
-    const contract = getContract()
-    const balance = await contract.getBalance()
+export const contractBalance = async (address) => {
+    if(!address) return
 
-    const formattedBalance = ethers.utils.formatEther(balance)
-    
-    console.log(formattedBalance)
+    try {
+        const contract = getContract()
+        const balance = await contract.getBalance()
 
-    return formattedBalance
+        const formattedBalance = ethers.utils.formatEther(balance)
+
+        console.log(formattedBalance)
+
+        return formattedBalance
+    } catch (error) {
+        console.log(error)
+    }
 }
