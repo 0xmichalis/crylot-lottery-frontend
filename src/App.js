@@ -6,7 +6,7 @@ import Login from './components/Login/Login';
 
 import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
 import {contractBalance, contractLastBet} from './controllers/contract'
-import BetContainer from './components/Bet/BetContainer/BetContainer';
+import BetContainer from './components/Bet/InfoContainer/InfoContainer';
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
 import InfoContract from '../InfoContract/InfoContract';
-import './BetContainer.css'
+import './InfoContainer.css'
 
 const BetContainer = ({wallet}) => {
     
