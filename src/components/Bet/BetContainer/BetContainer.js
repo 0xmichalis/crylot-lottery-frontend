@@ -34,10 +34,12 @@ const BetContainer = ({wallet}) => {
                     <Input
                     type={categorie}
                     label="Number"
-                    inputMessage="Insert a number between 0 ..."/>
+                    inputMessage="Insert a number between 0 ..."
+                    name="number"/>
                     <Input
                     inputMessage="Insert the amount to bet"
-                    label={"Amount to bet"}/>
+                    label={"Amount to bet"}
+                    name="amount"/>
                 </form>
 
             </section>
