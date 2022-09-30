@@ -6,6 +6,11 @@
     animation: border_color 3s ease infinite;
     box-shadow: 0px 3px 4px var(--primary),
                 0px 6px 8px var(--primary);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 1.4rem;
 }
 
 @keyframes border_color {
