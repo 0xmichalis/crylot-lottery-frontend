@@ -32,6 +32,12 @@ form button:hover{
     box-shadow: var(--dark);
     transition: all .2s;
 }
+.type_error{
+    width: 100%;
+    text-align: center;
+    margin-top: 1vh !important;
+    height: auto !important;
+}
 
 @keyframes color {
     0%{

@@ -12,6 +12,7 @@ const BetContainer = ({wallet}) => {
     const [loading, setLoading] = useState(false)
 
     const [categorie, setCategorie] = useState(-1)
+    const [errors, setErrors] = useState({})
 
     useEffect(()=>{
     }, [wallet])
@@ -20,6 +21,19 @@ const BetContainer = ({wallet}) => {
         return(
             <Loader width={"10%"}/>
         )
+    }
+
+    const bet = async (e) => {
+        e.preventDefault()
+        const { amount, number } = e.target
+        setErrors({})
+        if(categorie === -1 || !amount.value || !number.value){
+            if(!amount.value) setErrors((prev)=>({...prev, _amount:"Insert a valid amount"}))
+            if(!number.value) setErrors((prev)=>({...prev, _number:"Insert a valid number"}))
+            if(categorie === -1) setErrors((prev)=>({...prev, _type:"Insert a valid type"}))
+            return
+        }
+
     }
 
     return(
@@ -31,18 +45,27 @@ const BetContainer = ({wallet}) => {
                 selectCategorie={setCategorie}
                 />
 
-                <form>
+                <form onSubmit={bet}>
                     <Input
                     type={categorie}
                     label="Number"
                     inputMessage="Insert a number between 0 ..."
-                    name="number"/>
+                    name="number"
+                    error={errors._number}/>
                     <Input
                     inputMessage="Insert the amount to bet"
                     label={"Amount to bet"}
-                    name="amount"/>
+                    name="amount"
+                    error={errors._amount}/>
 
                     <button>Bet!</button>
+
+                    <p className='error type_error'>
+                        {
+                            errors._type &&
+                            "Please select a valid type"
+                        }
+                    </p>
                 </form>
 
             </section>
