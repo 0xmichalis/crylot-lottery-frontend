@@ -14,7 +14,7 @@
 }
 hr{
     width: 100%;
-    border-color: var(--light);
+    background-color: var(--light);
     animation: border_color 2s ease infinite;
     margin: 1rem .4rem;
 }

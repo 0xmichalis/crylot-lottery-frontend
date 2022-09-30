@@ -39,6 +39,19 @@ form button:hover{
     height: auto !important;
 }
 
+@media (max-width:600px){
+    .Bet.Container{
+        width: 80vw;
+    }
+
+    form button{
+        margin-top: 2vh;
+        font-size: 1.4em;
+        width: 70%;
+        padding: .8rem 0;
+    }
+}
+
 @keyframes color {
     0%{
         color: var(--primary);
