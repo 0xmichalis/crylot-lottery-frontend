@@ -40,6 +40,14 @@ body{
   background: var(--dark);
 }
 
+@media (max-width: 600px) {
+  header{
+    width: 100vw;
+    padding: .4rem .6rem;
+  }
+}
+
+
 @keyframes updown {
   0%{
     background-position: 0% 50%;
