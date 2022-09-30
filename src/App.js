@@ -5,7 +5,7 @@ import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
 import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
-import {contractBalance} from './controllers/contract'
+import {contractBalance, contractLastBet} from './controllers/contract'
 
 function App() {
 
@@ -30,6 +30,8 @@ function App() {
         checkWallet(),
         new Promise(resolve=>setTimeout(resolve, 2000))
       ])
+      await contractLastBet(walletAddress)
+      
       setLoading(false)
     }
     

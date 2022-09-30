@@ -32,10 +32,7 @@ export const checkIfWalletIsConnected = async () => {
     try {
         const accounts = await ethereum.request({ method: 'eth_accounts' });
   
-        if (accounts.length !== 0) {
-            console.log("Address: ", accounts[0]);
-            account = accounts[0];
-        }
+        if(accounts.length !== 0) account = accounts[0]
 
     } catch (error) {
         console.log(error)
