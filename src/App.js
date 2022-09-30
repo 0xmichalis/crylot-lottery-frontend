@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 
 import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
 import {contractBalance, contractLastBet} from './controllers/contract'
+import BetContainer from './components/Bet/BetContainer/BetContainer';
 
 function App() {
 
@@ -45,12 +46,13 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       {
         walletAddress ? <Header wallet={walletAddress}/>
         : <Login action={login}/>
       }
-    </div>
+      <BetContainer />
+    </>
   );
 }
 
