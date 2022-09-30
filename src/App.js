@@ -23,7 +23,7 @@ function App() {
 
   useEffect(()=>{
     const check = async () => {
-      let [res] = await Promise.allSettled([
+      await Promise.allSettled([
         checkWallet(),
         new Promise(resolve=>setTimeout(resolve, 2000))
       ])
