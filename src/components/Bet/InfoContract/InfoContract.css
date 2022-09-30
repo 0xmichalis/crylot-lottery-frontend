@@ -1,0 +1,15 @@
+.ContractInfo{
+    color: var(--light);
+    width: 42%;
+    font-size: 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .ContractInfo{
+        width: 45%;
+    }
+}

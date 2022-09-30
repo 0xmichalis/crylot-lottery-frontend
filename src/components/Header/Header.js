@@ -11,7 +11,7 @@ const Header = ({wallet}) => {
 
     return(
         <header>
-            <p className='address'>{extractMiddle(wallet)}</p>
+            <p className='address animate__animated animate__fadeInUp'>{extractMiddle(wallet)}</p>
         </header>
     )
 }

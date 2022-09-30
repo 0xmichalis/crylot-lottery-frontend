@@ -4,42 +4,61 @@ import Header from './components/Header/Header';
 import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
-const {requestAccount, checkIfWalletIsConnected} = require('./provider/Web3')
+import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
+import {contractBalance, contractLastBet} from './controllers/contract'
+import InfoContainer from './components/Bet/InfoContainer/InfoContainer';
+import BetContainer from './components/Bet/BetContainer/BetContainer';
 
 function App() {
 
   const [loading, setLoading] = useState(true)
   const [walletAddress, setWalletAddress] = useState('')
+  const [contract, setContractValues] = useState({})
   
-  const getAccount = async () => {
+  
+  const login = async () => {
     const address = await requestAccount()
     setWalletAddress(address)
   }
 
+  const checkWallet = async () => {
+    const address = await checkIfWalletIsConnected()
+    setWalletAddress(address)
+  }
+
   useEffect(()=>{
-    const checkWallet = async () => {
-      const address = await checkIfWalletIsConnected()
-      setWalletAddress(address)
-      setTimeout(()=>{
-        setLoading(false)
-      }, 2000)
+    const check = async () => {
+      await Promise.allSettled([
+        checkWallet(),
+        new Promise(resolve=>setTimeout(resolve, 2000))
+      ])
+      await contractLastBet(walletAddress)
+      
+      setLoading(false)
     }
-    checkWallet()
-  })
+    
+    check()
+  }, [])
 
   if(loading){
     return(
-      <Loader width={"40%"} />
+      <main>
+        <Loader width={"40%"} />
+      </main>
     )
   }
 
   return (
-    <div>
+    <>
       {
         walletAddress ? <Header wallet={walletAddress}/>
-        : <Login action={getAccount}/>
+        : <Login action={login}/>
       }
-    </div>
+      <main>
+        <InfoContainer wallet={walletAddress} setContractValues={setContractValues}/>
+        <BetContainer wallet={walletAddress} contract={contract}/>
+      </main>
+    </>
   );
 }
 
