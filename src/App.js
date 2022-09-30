@@ -5,12 +5,14 @@ import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
 import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
-
+import {contractBalance} from './controllers/contract'
 
 function App() {
 
   const [loading, setLoading] = useState(true)
   const [walletAddress, setWalletAddress] = useState('')
+  
+  
   
   const login = async () => {
     const address = await requestAccount()
@@ -32,7 +34,7 @@ function App() {
     }
     
     check()
-  })
+  }, [])
 
   if(loading){
     return(
