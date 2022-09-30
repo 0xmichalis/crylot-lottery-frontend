@@ -34,10 +34,14 @@ body{
   background-size: 400% 400%;
   animation: updown 5s ease infinite;
 
+}
+main{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: var(--dark);
+  min-height: 90vh;
+  padding-top: 10vh;
 }
 
 @media (max-width: 600px) {

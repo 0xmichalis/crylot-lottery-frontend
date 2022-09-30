@@ -51,7 +51,9 @@ function App() {
         walletAddress ? <Header wallet={walletAddress}/>
         : <Login action={login}/>
       }
-      <BetContainer wallet={walletAddress}/>
+      <main>
+        <BetContainer wallet={walletAddress}/>
+      </main>
     </>
   );
 }
