@@ -45,9 +45,11 @@ const BetContainer = ({wallet}) => {
     return(
         <article className='BetContainer'>
             <InfoContract title="Contract liquidity" value={balance}/>
+            <InfoContract title="User funds" value={userFunds}/>
+            <hr/>
             <InfoContract title="Total bets" value={totalBets} noSymbol={true}/>
             <InfoContract title="User bets" value={userBets} noSymbol={true}/>
-            <InfoContract title="User funds" value={userFunds}/>
+            <hr/>
             <InfoContract title="Min bet" value={minBet}/>
             <InfoContract title="Max bet" value={maxBet}/>
         </article>

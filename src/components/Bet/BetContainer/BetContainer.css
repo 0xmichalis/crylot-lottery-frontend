@@ -1,6 +1,6 @@
 .BetContainer{
-    width: 40vw;
-    height: 70vh;
+    width: 25vw;
+    min-height: 20vh;
     border-radius: var(--radius);
     border: 2px solid;
     animation: border_color 3s ease infinite;
@@ -11,6 +11,12 @@
     align-items: flex-start;
     flex-wrap: wrap;
     padding: 1.4rem;
+}
+hr{
+    width: 100%;
+    border-color: var(--light);
+    animation: border_color 3s ease infinite;
+    margin: 1rem;
 }
 
 @keyframes border_color {
