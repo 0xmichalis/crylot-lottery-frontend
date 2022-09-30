@@ -8,7 +8,7 @@ import Input from '../Input/Input';
 import Swal from 'sweetalert2'
 
 
-const BetContainer = ({wallet}) => {
+const BetContainer = ({wallet, contract}) => {
     
     const [loading, setLoading] = useState(false)
 
@@ -18,15 +18,18 @@ const BetContainer = ({wallet}) => {
     const multipliers = {
         0:{
             type:'Bronze',
-            multiplier:7
+            multiplier:7,
+            max:9
         },
         1:{
             type:"Emerald",
-            multiplier:35
+            multiplier:35,
+            max:49
         },
         2:{
             type:"Diamond",
-            multiplier:70
+            multiplier:70,
+            max:99
         },
     }
 
@@ -34,10 +37,14 @@ const BetContainer = ({wallet}) => {
         e.preventDefault()
         const { amount, number } = e.target
         setErrors({})
-        if(categorie === -1 || !amount.value || !number.value){
-            if(!amount.value) setErrors((prev)=>({...prev, _amount:"Insert a valid amount"}))
-            if(!number.value) setErrors((prev)=>({...prev, _number:"Insert a valid number"}))
+        if(categorie === -1 || 
+        (amount.value > contract.maxBet || amount.value < contract.minBet) ||
+        (number.value > multipliers[categorie].max || !number.value)){
             if(categorie === -1) setErrors((prev)=>({...prev, _type:"Insert a valid type"}))
+            if(amount.value > contract.maxBet) setErrors((prev)=>({...prev, _amount:"The amount must be lower than max bet"}))
+            if(amount.value < contract.minBet) setErrors((prev)=>({...prev, _amount:"The amount must be higher than min bet"}))
+            if(number.value > multipliers[categorie].max) setErrors((prev)=>({...prev, _number:`Insert a number up to ${multipliers[categorie].max}`}))
+            if(!number.value) setErrors((prev)=>({...prev, _number:"Insert a valid number"}))
             return
         }
         Swal.fire({

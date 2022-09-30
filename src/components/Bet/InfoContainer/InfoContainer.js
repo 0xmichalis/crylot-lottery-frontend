@@ -4,7 +4,7 @@ import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
 import Loader from '../../Loader/Loader'
 
-const InfoContainer = ({wallet}) => {
+const InfoContainer = ({wallet, setContractValues}) => {
     
     const [loading, setLoading] = useState(true)
 
@@ -38,6 +38,14 @@ const InfoContainer = ({wallet}) => {
                 const userFunds = await contractUserBets(contract, signer)
                 setUserFunds(userFunds)
 
+                setContractValues({
+                    balance,
+                    minBet,
+                    maxBet,
+                    totalBets,
+                    userBets,
+                    userFunds
+                })
             } catch (error) {
                 console.log(error)
             }finally{

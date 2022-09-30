@@ -13,7 +13,7 @@ function App() {
 
   const [loading, setLoading] = useState(true)
   const [walletAddress, setWalletAddress] = useState('')
-  
+  const [contract, setContractValues] = useState({})
   
   
   const login = async () => {
@@ -55,8 +55,8 @@ function App() {
         : <Login action={login}/>
       }
       <main>
-        <InfoContainer wallet={walletAddress}/>
-        <BetContainer wallet={walletAddress}/>
+        <InfoContainer wallet={walletAddress} setContractValues={setContractValues}/>
+        <BetContainer wallet={walletAddress} contract={contract}/>
       </main>
     </>
   );
