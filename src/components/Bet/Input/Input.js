@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './Input.css'
 import '../InfoContainer/InfoContainer.css'
 
@@ -16,7 +16,7 @@ const Input = ({label, type, inputMessage, name, error}) => {
             
             <input type="number"
             placeholder={`${inputMessage} ${categories[type] || ''}`}
-            name={name}/>
+            name={name} step="any"/>
 
             <p className='error'>{error}</p>
         </div>

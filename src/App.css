@@ -44,6 +44,9 @@ main{
   min-height: 90vh;
   padding-top: 10vh;
 }
+strong{
+  color: var(--primary);
+}
 
 @media (max-width: 600px) {
   header{

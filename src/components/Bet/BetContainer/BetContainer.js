@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
 import './BetContainer.css'
 import '../InfoContainer/InfoContainer.css'
 import '../../Login/Login.css'
 import Loader from '../../Loader/Loader'
 import Categories from '../Categories/Categories';
 import Input from '../Input/Input';
+import Swal from 'sweetalert2'
+
 
 const BetContainer = ({wallet}) => {
     
@@ -14,10 +15,19 @@ const BetContainer = ({wallet}) => {
     const [categorie, setCategorie] = useState(-1)
     const [errors, setErrors] = useState({})
 
-    const multiplier = {
-        0:7,
-        1:35,
-        2:70,
+    const multipliers = {
+        0:{
+            type:'Bronze',
+            multiplier:7
+        },
+        1:{
+            type:"Emerald",
+            multiplier:35
+        },
+        2:{
+            type:"Diamond",
+            multiplier:70
+        },
     }
 
     const bet = async (e) => {
@@ -30,7 +40,16 @@ const BetContainer = ({wallet}) => {
             if(categorie === -1) setErrors((prev)=>({...prev, _type:"Insert a valid type"}))
             return
         }
-
+        Swal.fire({
+            title: `${multipliers[categorie].type} Bet`,
+            html: `You are betting to number <strong>${number.value}</strong> <br/> You will recieve <strong>Ξ ${Number(amount.value) * Number(multipliers[categorie].multiplier)}</strong> aprox`,
+            icon: 'info',
+            confirmButtonText: "Let's bet!",
+            confirmButtonColor:"var(--primary)",
+            showCancelButton:true,
+            cancelButtonColor:"var(--red)",
+            reverseButtons:true
+        })
     }
 
 
