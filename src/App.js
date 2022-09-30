@@ -6,7 +6,8 @@ import Login from './components/Login/Login';
 
 import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
 import {contractBalance, contractLastBet} from './controllers/contract'
-import BetContainer from './components/Bet/InfoContainer/InfoContainer';
+import InfoContainer from './components/Bet/InfoContainer/InfoContainer';
+import BetContainer from './components/Bet/BetContainer/BetContainer';
 
 function App() {
 
@@ -41,7 +42,9 @@ function App() {
 
   if(loading){
     return(
-      <Loader width={"40%"} />
+      <main>
+        <Loader width={"40%"} />
+      </main>
     )
   }
 
@@ -52,6 +55,7 @@ function App() {
         : <Login action={login}/>
       }
       <main>
+        <InfoContainer wallet={walletAddress}/>
         <BetContainer wallet={walletAddress}/>
       </main>
     </>

@@ -1,6 +1,7 @@
-.InfoContainer{
-    width: 25vw;
-    min-height: 20vh;
+.BetContainer{
+    width: 35vw;
+    min-height: 45vh;
+    margin-top: 5vh;
     border-radius: var(--radius);
     border: 2px solid;
     animation: border_color 2s ease infinite;
@@ -20,7 +21,7 @@ hr{
 }
 
 @media (max-width: 600px){
-    .InfoContainer{
+    .BetContainer{
         width: 70vw;
         font-size: .6em;
         padding: .8rem;

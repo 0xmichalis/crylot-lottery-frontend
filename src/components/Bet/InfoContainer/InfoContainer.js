@@ -4,7 +4,7 @@ import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
 import Loader from '../../Loader/Loader'
 
-const BetContainer = ({wallet}) => {
+const InfoContainer = ({wallet}) => {
     
     const [loading, setLoading] = useState(true)
 
@@ -55,7 +55,7 @@ const BetContainer = ({wallet}) => {
 
     return(
         <article className='animate__animated animate__fadeInDown'>
-            <section className='BetContainer'>
+            <section className='InfoContainer'>
                 <InfoContract title="Contract liquidity" value={balance} loading={loading}/>
                 <InfoContract title="User funds" value={userFunds} loading={loading}/>
                 <hr/>
@@ -69,4 +69,4 @@ const BetContainer = ({wallet}) => {
     )
 }
 
-export default BetContainer;
+export default InfoContainer;
