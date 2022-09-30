@@ -11,8 +11,15 @@ export const requestAccount = async () => {
 
     const { ethereum } = window;
 
-    const address = await ethereum.request({method:"eth_requestAccounts"})
-    return address[0]
+    let account;
+    try {
+        const address = await ethereum.request({method:"eth_requestAccounts"})
+        account =  address[0]
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+    return account
 }
 
 export const checkIfWalletIsConnected = async () => {
@@ -20,11 +27,20 @@ export const checkIfWalletIsConnected = async () => {
   
     const { ethereum } = window;
   
-    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    let account;
+
+    try {
+        const accounts = await ethereum.request({ method: 'eth_accounts' });
   
-    if (accounts.length !== 0) {
-        console.log("Address: ", accounts[0]);
-        return accounts[0];
+        if (accounts.length !== 0) {
+            console.log("Address: ", accounts[0]);
+            account = accounts[0];
+        }
+
+    } catch (error) {
+        console.log(error)
+        return false
     }
-    return ''
+
+    return account
 }
