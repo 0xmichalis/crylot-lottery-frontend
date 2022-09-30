@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
 import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
+import Loader from '../../Loader/Loader'
 
 const BetContainer = ({wallet}) => {
     
+    const [loading, setLoading] = useState(true)
+
     const [balance, setBalance] = useState(0)
     const [minBet, setMinBet] = useState(0)
     const [maxBet, setMaxBet] = useState(0)
@@ -37,21 +40,31 @@ const BetContainer = ({wallet}) => {
 
             } catch (error) {
                 console.log(error)
+            }finally{
+                setLoading(false)
             }
         }
         getInfo()
     }, [wallet])
 
+    if(loading){
+        return(
+            <Loader width={"40%"}/>
+        )
+    }
+
     return(
-        <article className='BetContainer'>
-            <InfoContract title="Contract liquidity" value={balance}/>
-            <InfoContract title="User funds" value={userFunds}/>
-            <hr/>
-            <InfoContract title="Total bets" value={totalBets} noSymbol={true}/>
-            <InfoContract title="User bets" value={userBets} noSymbol={true}/>
-            <hr/>
-            <InfoContract title="Min bet" value={minBet}/>
-            <InfoContract title="Max bet" value={maxBet}/>
+        <article className='animate__animated animate__fadeInDown'>
+            <section className='BetContainer'>
+                <InfoContract title="Contract liquidity" value={balance} loading={loading}/>
+                <InfoContract title="User funds" value={userFunds} loading={loading}/>
+                <hr/>
+                <InfoContract title="Total bets" value={totalBets} loading={loading} noSymbol={true}/>
+                <InfoContract title="User bets" value={userBets} loading={loading} noSymbol={true}/>
+                <hr/>
+                <InfoContract title="Min bet" value={minBet} loading={loading}/>
+                <InfoContract title="Max bet" value={maxBet} loading={loading}/>
+            </section>
         </article>
     )
 }
