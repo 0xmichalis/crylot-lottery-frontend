@@ -30,6 +30,71 @@ export const contractBalance = async () => {
     }
 }
 
+export const contractMinBet = async () => {
+    try {
+        const contract = getContract()
+        const MinBet = await contract.getMinBet()
+
+        const formattedMinBet = ethers.utils.formatEther(MinBet)
+
+        console.log('Contract min bet -> ', formattedMinBet)
+
+        return formattedMinBet
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const contractMaxBet = async () => {
+    try {
+        const contract = getContract()
+        const MaxBet = await contract.getMaxBet()
+
+        const formattedMaxBet = ethers.utils.formatEther(MaxBet)
+
+        console.log('Contract max bet -> ', formattedMaxBet)
+
+        return formattedMaxBet
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const contractTotalBets = async () => {
+    try {
+        const contract = getContract()
+        const TotalBets = await contract.getTotalBets()
+
+        const formattedTotalBets = Number(ethers.utils.formatEther(TotalBets))
+
+        console.log('Contract total bets -> ', formattedTotalBets)
+
+        return formattedTotalBets
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const contractUserBets = async () => {
+    try {
+        const contract = getContract()
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const userAddress = await signer.getAddress()
+        const UserBets = await contract.getUserBets(userAddress)
+
+        const formattedUserBets = Number(ethers.utils.formatEther(UserBets))
+
+        console.log('Contract user bets -> ', formattedUserBets)
+
+        return formattedUserBets
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 export const contractLastBet = async () => {
     try {
         const contract = getContract()
