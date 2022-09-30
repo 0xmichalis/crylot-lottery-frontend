@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
 import './BetContainer.css'
+import '../InfoContainer/InfoContainer.css'
 import Loader from '../../Loader/Loader'
+import Categories from '../Categories/Categories';
 
 const BetContainer = ({wallet}) => {
     
     const [loading, setLoading] = useState(false)
+
+    const [categorie, setCategorie] = useState(-1)
 
     useEffect(()=>{
     }, [wallet])
@@ -18,7 +22,12 @@ const BetContainer = ({wallet}) => {
 
     return(
         <article className='animate__animated animate__jackInTheBox'>
-            <section className='BetContainer'>
+            <section className='Container Bet'>
+                <p className='bet__title'>Make a bet!</p>
+                <Categories
+                categorieSelected={categorie}
+                selectCategorie={setCategorie}
+                />
             </section>
         </article>
     )

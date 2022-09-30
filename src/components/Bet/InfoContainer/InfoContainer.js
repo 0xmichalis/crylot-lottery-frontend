@@ -55,7 +55,7 @@ const InfoContainer = ({wallet}) => {
 
     return(
         <article className='animate__animated animate__fadeInDown'>
-            <section className='InfoContainer'>
+            <section className='Container'>
                 <InfoContract title="Contract liquidity" value={balance} loading={loading}/>
                 <InfoContract title="User funds" value={userFunds} loading={loading}/>
                 <hr/>

@@ -1,4 +1,4 @@
-.InfoContainer{
+.Container{
     width: 25vw;
     min-height: 20vh;
     border-radius: var(--radius);
@@ -20,7 +20,7 @@ hr{
 }
 
 @media (max-width: 600px){
-    .InfoContainer{
+    .Container{
         width: 70vw;
         font-size: .6em;
         padding: .8rem;
