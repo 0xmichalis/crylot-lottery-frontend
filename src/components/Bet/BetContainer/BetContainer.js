@@ -3,7 +3,7 @@ import { getContract, contractBalance, contractMaxBet, contractMinBet, contractT
 import InfoContract from '../InfoContract/InfoContract';
 import './BetContainer.css'
 
-const BetContainer = () => {
+const BetContainer = ({wallet}) => {
     
     const [balance, setBalance] = useState(0)
     const [minBet, setMinBet] = useState(0)
@@ -35,11 +35,11 @@ const BetContainer = () => {
             }
         }
         getInfo()
-    }, [])
+    }, [wallet])
 
     return(
         <article className='BetContainer'>
-            <InfoContract title="Contract balance" value={balance}/>
+            <InfoContract title="Contract liquidity" value={balance}/>
             <InfoContract title="Total bets" value={totalBets} noSymbol={true}/>
             <InfoContract title="User bets" value={userBets} noSymbol={true}/>
             <InfoContract title="Min bet" value={minBet}/>
