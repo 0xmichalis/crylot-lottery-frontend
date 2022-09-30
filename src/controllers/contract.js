@@ -15,9 +15,7 @@ export const getContract = () => {
     }
 }
 
-export const contractBalance = async (address) => {
-    if(!address) return
-
+export const contractBalance = async () => {
     try {
         const contract = getContract()
         const balance = await contract.getBalance()
@@ -32,9 +30,7 @@ export const contractBalance = async (address) => {
     }
 }
 
-export const contractLastBet = async (address) => {
-    if(!address) return
-
+export const contractLastBet = async () => {
     try {
         const contract = getContract()
         const [_addr, amount, number] = await contract.getLastBet()
