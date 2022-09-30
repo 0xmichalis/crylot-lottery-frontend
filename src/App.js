@@ -11,20 +11,26 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [walletAddress, setWalletAddress] = useState('')
   
-  const getAccount = async () => {
+  const login = async () => {
     const address = await requestAccount()
     setWalletAddress(address)
   }
 
+  const checkWallet = async () => {
+    const address = await checkIfWalletIsConnected()
+    setWalletAddress(address)
+  }
+
   useEffect(()=>{
-    const checkWallet = async () => {
-      const address = await checkIfWalletIsConnected()
-      setWalletAddress(address)
-      setTimeout(()=>{
-        setLoading(false)
-      }, 2000)
+    const check = async () => {
+      let [res] = await Promise.allSettled([
+        checkWallet(),
+        new Promise(resolve=>setTimeout(resolve, 2000))
+      ])
+      setLoading(false)
     }
-    checkWallet()
+    
+    check()
   })
 
   if(loading){
@@ -37,7 +43,7 @@ function App() {
     <div>
       {
         walletAddress ? <Header wallet={walletAddress}/>
-        : <Login action={getAccount}/>
+        : <Login action={login}/>
       }
     </div>
   );
