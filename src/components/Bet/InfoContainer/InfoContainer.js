@@ -49,7 +49,7 @@ const InfoContainer = ({wallet}) => {
 
     if(loading){
         return(
-            <Loader width={"40%"}/>
+            <Loader width={"15%"}/>
         )
     }
 
