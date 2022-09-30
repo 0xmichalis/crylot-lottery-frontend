@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
-const {requestAccount, checkIfWalletIsConnected} = require('./controllers/Web3')
+const {requestAccount, checkIfWalletIsConnected} = require('./controllers/web3')
 
 function App() {
 
