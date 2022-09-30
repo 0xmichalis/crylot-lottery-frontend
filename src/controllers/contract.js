@@ -104,6 +104,21 @@ export const contractUserBets = async (contract, signer) => {
     }
 }
 
+export const contractUserFunds = async (contract, signer) => {
+    try {
+        const userAddress = await signer.getAddress()
+        const UserFunds = await contract.getFunds(userAddress)
+
+        const formattedFunds = ethers.utils.formatEther(UserFunds)
+
+        console.log('Contract user funds -> ', formattedFunds)
+
+        return formattedFunds
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 export const contractLastBet = async (contract) => {
     try {

@@ -10,6 +10,7 @@ const BetContainer = ({wallet}) => {
     const [maxBet, setMaxBet] = useState(0)
     const [totalBets, setTotalBets] = useState(0)
     const [userBets, setUserBets] = useState(0)
+    const [userFunds, setUserFunds] = useState(0)
 
     useEffect(()=>{
         const getInfo = async () => {
@@ -30,6 +31,10 @@ const BetContainer = ({wallet}) => {
 
                 const userBets = await contractUserBets(contract, signer)
                 setUserBets(userBets)
+
+                const userFunds = await contractUserBets(contract, signer)
+                setUserFunds(userFunds)
+
             } catch (error) {
                 console.log(error)
             }
@@ -42,6 +47,7 @@ const BetContainer = ({wallet}) => {
             <InfoContract title="Contract liquidity" value={balance}/>
             <InfoContract title="Total bets" value={totalBets} noSymbol={true}/>
             <InfoContract title="User bets" value={userBets} noSymbol={true}/>
+            <InfoContract title="User funds" value={userFunds}/>
             <InfoContract title="Min bet" value={minBet}/>
             <InfoContract title="Max bet" value={maxBet}/>
         </article>
