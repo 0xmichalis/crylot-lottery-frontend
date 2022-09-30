@@ -14,13 +14,10 @@ const BetContainer = ({wallet}) => {
     const [categorie, setCategorie] = useState(-1)
     const [errors, setErrors] = useState({})
 
-    useEffect(()=>{
-    }, [wallet])
-
-    if(loading){
-        return(
-            <Loader width={"10%"}/>
-        )
+    const multiplier = {
+        0:7,
+        1:35,
+        2:70,
     }
 
     const bet = async (e) => {
@@ -34,6 +31,13 @@ const BetContainer = ({wallet}) => {
             return
         }
 
+    }
+
+
+    if(loading){
+        return(
+            <Loader width={"10%"}/>
+        )
     }
 
     return(
