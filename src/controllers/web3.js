@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 export const hasMetamask = () => {
     if(!window.ethereum){
         Swal.fire({
+            icon:'warning',
             title: `Metamask not installed`,
             html: `Please install metamask before you start playing.`,
             confirmButtonText: "I will",
