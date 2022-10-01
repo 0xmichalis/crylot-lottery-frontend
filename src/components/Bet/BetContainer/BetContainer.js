@@ -35,6 +35,10 @@ const BetContainer = ({wallet, contract}) => {
 
     const bet = async (e) => {
         e.preventDefault()
+        if(!wallet){
+            setErrors({_type:"Please login"})
+            return
+        }
         const { amount, number } = e.target
         setErrors({})
         if(categorie === -1 || 
@@ -91,10 +95,7 @@ const BetContainer = ({wallet, contract}) => {
                     <button>Bet!</button>
 
                     <p className='error type_error'>
-                        {
-                            errors._type &&
-                            "Please select a valid type"
-                        }
+                        {errors._type}
                     </p>
                 </form>
 
