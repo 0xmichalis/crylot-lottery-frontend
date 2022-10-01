@@ -1,6 +1,14 @@
+import Swal from 'sweetalert2'
+
 export const hasMetamask = () => {
     if(!window.ethereum){
-        alert("Metamask not installed")
+        Swal.fire({
+            title: `Metamask not installed`,
+            html: `Please install metamask before you start playing.`,
+            confirmButtonText: "I will",
+            confirmButtonColor:"var(--primary)",
+            cancelButtonColor:"var(--red)",
+        })
         return false
     }
     return true

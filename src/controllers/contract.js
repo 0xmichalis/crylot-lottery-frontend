@@ -4,18 +4,13 @@ import { checkIfWalletIsConnected } from './web3';
 
 export const getContract = async () => {
     const wallet = await checkIfWalletIsConnected()
-    if(!wallet){
-        alert("wallet not connected")
-        return
-    }
+    if(!wallet) return
 
     try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
 
-        if(!signer){
-            alert("Not connected")
-        }
+        if(!signer) return;
 
         const contract = new ethers.Contract(ADDRESS, ABI, signer);
 
