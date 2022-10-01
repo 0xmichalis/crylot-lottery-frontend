@@ -1,4 +1,4 @@
-export const ADDRESS = "0x7c2b8d1AaFf2C009d7BBeE2973FfFc37dFa35b39"
+export const ADDRESS = "0x9c1e325F622CaE753570774667552E1F45EEa94F"
 
 export const ABI = [
     {
@@ -84,7 +84,13 @@ export const ABI = [
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_addr",
+          "type": "address"
+        }
+      ],
       "name": "getFunds",
       "outputs": [
         {
