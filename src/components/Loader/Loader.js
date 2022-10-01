@@ -9,7 +9,7 @@ const Loader = ({width}) => {
     }
     
     return(
-        <div className='Loader'>
+        <div className='Loader animate__animated animate__fadeIn'>
             <img src={EthLoader}
             alt="Ethereum Loader"
             style={styles}/>
