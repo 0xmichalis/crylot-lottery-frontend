@@ -77,9 +77,11 @@ const BetContainer = ({wallet, contract}) => {
                 await contractMakeBet(contract, bet)
             } catch (error) {
                 console.log(error)
+            }finally{
+                setBetting(false)
             }
-            setBetting(false)
         }
+        setBetting(false)
     }
 
 
