@@ -54,6 +54,11 @@ strong{
     width: 100vw;
     padding: .6rem .6rem;
   }
+
+  main{
+    padding-top: 14vh;
+    min-height: 86vh;
+  }
 }
 
 
