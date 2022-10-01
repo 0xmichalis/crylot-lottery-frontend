@@ -6,6 +6,7 @@ import Loader from '../../Loader/Loader'
 import Categories from '../Categories/Categories';
 import Input from '../Input/Input';
 import Swal from 'sweetalert2'
+import { contractMakeBet, getContract } from '../../../controllers/contract'
 
 
 const BetContainer = ({wallet, contract}) => {
@@ -66,6 +67,17 @@ const BetContainer = ({wallet, contract}) => {
         })
 
         if(isConfirmed){
+            const bet = {
+                amount: amount.value,
+                number: number.value,
+                categorie: categorie,
+            }
+            try {
+                const {contract} = await getContract()
+                await contractMakeBet(contract, bet)
+            } catch (error) {
+                console.log(error)
+            }
             setBetting(false)
         }
     }

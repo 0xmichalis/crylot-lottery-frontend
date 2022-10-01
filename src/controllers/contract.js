@@ -16,7 +16,6 @@ export const getContract = async () => {
         if(!signer){
             alert("Not connected")
         }
-        console.log("hola")
 
         const contract = new ethers.Contract(ADDRESS, ABI, signer);
 
@@ -113,7 +112,6 @@ export const contractUserFunds = async (contract, signer) => {
     }
 }
 
-
 export const contractLastBet = async (contract) => {
     try {
         const [_addr, amount, number] = await contract.getLastBet()
@@ -127,6 +125,18 @@ export const contractLastBet = async (contract) => {
 
         return lastBet
 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const contractMakeBet = async (contract, bet) => {
+    try {
+        const { amount, number, categorie } = bet
+
+        const value = ethers.utils.parseEther(amount)
+
+        await contract.bet(number, categorie, {value})
     } catch (error) {
         console.log(error)
     }
