@@ -72,7 +72,7 @@ export const contractTotalBets = async (contract) => {
     try {
         const TotalBets = await contract.getTotalBets()
 
-        const formattedTotalBets = Number(ethers.utils.formatEther(TotalBets))
+        const formattedTotalBets = Number(ethers.utils.formatEther(TotalBets))*10**18
 
         console.log('Contract total bets -> ', formattedTotalBets)
 
@@ -87,7 +87,7 @@ export const contractUserBets = async (contract, signer) => {
         const userAddress = await signer.getAddress()
         const UserBets = await contract.getUserBets(userAddress)
 
-        const formattedUserBets = Number(ethers.utils.formatEther(UserBets))
+        const formattedUserBets = Number(ethers.utils.formatEther(UserBets))*10**18
 
         console.log('Contract user bets -> ', formattedUserBets)
 
