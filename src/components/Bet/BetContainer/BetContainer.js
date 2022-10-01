@@ -40,6 +40,7 @@ const BetContainer = ({wallet, contract}) => {
             return
         }
         const { amount, number } = e.target
+        console.log(number.value)
         setErrors({})
         if(categorie === -1 || 
         (amount.value > contract.maxBet || amount.value < contract.minBet) ||
@@ -47,8 +48,8 @@ const BetContainer = ({wallet, contract}) => {
             if(categorie === -1) setErrors((prev)=>({...prev, _type:"Insert a valid type"}))
             if(amount.value > contract.maxBet) setErrors((prev)=>({...prev, _amount:"The amount must be lower than max bet"}))
             if(amount.value < contract.minBet) setErrors((prev)=>({...prev, _amount:"The amount must be higher than min bet"}))
+            if(!number.value) setErrors((prev)=>({...prev, _number:"Insert a number"}))
             if(number.value > multipliers[categorie].max) setErrors((prev)=>({...prev, _number:`Insert a number up to ${multipliers[categorie].max}`}))
-            if(!number.value) setErrors((prev)=>({...prev, _number:"Insert a valid number"}))
             return
         }
         Swal.fire({
