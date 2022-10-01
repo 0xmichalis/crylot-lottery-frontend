@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets } from '../../../controllers/contract';
+import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets, contractUserFunds } from '../../../controllers/contract';
 import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
 import Loader from '../../Loader/Loader'
@@ -35,7 +35,7 @@ const InfoContainer = ({wallet, setContractValues}) => {
                 const userBets = await contractUserBets(contract, signer)
                 setUserBets(userBets)
 
-                const userFunds = await contractUserBets(contract, signer)
+                const userFunds = await contractUserFunds(contract, signer)
                 setUserFunds(userFunds)
 
                 setContractValues({
