@@ -23,20 +23,23 @@ form button{
     margin-top: 4vh;
     width: 40%;
     animation: border_color 2s ease infinite;
-}
-form button:hover{
-    -webkit-animation: 0;
-    background-color: var(--p-light);
-    color: var(--dark);
-    font-weight: bold;
-    box-shadow: var(--dark);
     transition: all .2s;
 }
+
 .type_error{
     width: 100%;
     text-align: center;
     margin-top: 1vh !important;
     height: auto !important;
+}
+@media (min-width: 600px){
+    form button:hover{
+        -webkit-animation: 0;
+        background-color: var(--p-light);
+        color: var(--dark);
+        font-weight: bold;
+        box-shadow: var(--dark);
+    }
 }
 
 @media (max-width:600px){
@@ -49,6 +52,14 @@ form button:hover{
         font-size: 1.4em;
         width: 70%;
         padding: .8rem 0;
+    }
+
+    form button:active{
+        -webkit-animation: 0;
+        background-color: var(--p-light);
+        color: var(--dark);
+        font-weight: bold;
+        box-shadow: var(--dark);
     }
 }
 

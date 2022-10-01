@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 
 const BetContainer = ({wallet, contract}) => {
     
-    const [loading, setLoading] = useState(false)
+    const [betting, setBetting] = useState(false)
 
     const [categorie, setCategorie] = useState(-1)
     const [errors, setErrors] = useState({})
@@ -39,37 +39,37 @@ const BetContainer = ({wallet, contract}) => {
             setErrors({_type:"Please login"})
             return
         }
+        setBetting(true)
+
         const { amount, number } = e.target
-        console.log(number.value)
+
         setErrors({})
         if(categorie === -1 || 
         (amount.value > contract.maxBet || amount.value < contract.minBet) ||
-        (number.value > multipliers[categorie].max || !number.value)){
+        (number.value > multipliers[categorie]?.max || !number.value)){
             if(categorie === -1) setErrors((prev)=>({...prev, _type:"Insert a valid type"}))
             if(amount.value > contract.maxBet) setErrors((prev)=>({...prev, _amount:"The amount must be lower than max bet"}))
             if(amount.value < contract.minBet) setErrors((prev)=>({...prev, _amount:"The amount must be higher than min bet"}))
             if(!number.value) setErrors((prev)=>({...prev, _number:"Insert a number"}))
-            if(number.value > multipliers[categorie].max) setErrors((prev)=>({...prev, _number:`Insert a number up to ${multipliers[categorie].max}`}))
+            if(number.value > multipliers[categorie]?.max) setErrors((prev)=>({...prev, _number:`Insert a number up to ${multipliers[categorie].max}`}))
+            setBetting(false)
             return
         }
-        Swal.fire({
+        const {isConfirmed} = await Swal.fire({
             title: `${multipliers[categorie].type} Bet`,
             html: `You are betting to number <strong>${number.value}</strong> <br/> You will recieve <strong>Ξ ${Number(amount.value) * Number(multipliers[categorie].multiplier)}</strong> aprox`,
-            icon: 'info',
             confirmButtonText: "Let's bet!",
             confirmButtonColor:"var(--primary)",
             showCancelButton:true,
             cancelButtonColor:"var(--red)",
-            reverseButtons:true
+            reverseButtons:true,
         })
+
+        if(isConfirmed){
+            setBetting(false)
+        }
     }
 
-
-    if(loading){
-        return(
-            <Loader width={"10%"}/>
-        )
-    }
 
     return(
         <article className='animate__animated animate__jackInTheBox'>
@@ -93,7 +93,16 @@ const BetContainer = ({wallet, contract}) => {
                     name="amount"
                     error={errors._amount}/>
 
-                    <button>Bet!</button>
+                    {
+                        betting ?
+                        <>
+                        <br/>
+                        <br/>
+                        <Loader width={"15%"}/>
+                        </>
+                        :
+                        <button>Bet!</button>
+                    }
 
                     <p className='error type_error'>
                         {errors._type}
