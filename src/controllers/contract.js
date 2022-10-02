@@ -137,3 +137,11 @@ export const contractMakeBet = async (contract, bet) => {
         console.log(error)
     }
 }
+
+export const contractWithdrawFunds = async (contract) => {
+    try {
+        await contract.withdrawUserFunds()
+    } catch (error) {
+        console.log(error)
+    }
+}
