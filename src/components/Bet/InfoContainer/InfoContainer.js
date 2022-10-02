@@ -4,6 +4,7 @@ import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
 import Loader from '../../Loader/Loader'
 import WithdrawFunds from '../WithdrawFunds/WithdrawFunds';
+import { BetDoneEvent, WithdrawFundsEvent } from '../../../controllers/events';
 
 const InfoContainer = ({wallet, setContractValues}) => {
     
@@ -16,45 +17,53 @@ const InfoContainer = ({wallet, setContractValues}) => {
     const [userBets, setUserBets] = useState(0)
     const [userFunds, setUserFunds] = useState(0)
 
-    useEffect(()=>{
-        const getInfo = async () => {
-            try {
-                const {contract, signer} = await getContract()
+    const getInfo = async () => {
+        try {
+            const {contract, signer} = await getContract()
 
-                const balance = await contractBalance(contract)
-                setBalance(balance)
+            const balance = await contractBalance(contract)
+            setBalance(balance)
 
-                const minBet = await contractMinBet(contract)
-                setMinBet(minBet)
+            const minBet = await contractMinBet(contract)
+            setMinBet(minBet)
 
-                const maxBet = await contractMaxBet(contract)
-                setMaxBet(maxBet)
+            const maxBet = await contractMaxBet(contract)
+            setMaxBet(maxBet)
 
-                const totalBets = await contractTotalBets(contract)
-                setTotalBets(totalBets)
+            const totalBets = await contractTotalBets(contract)
+            setTotalBets(totalBets)
 
-                const userBets = await contractUserBets(contract, signer)
-                setUserBets(userBets)
+            const userBets = await contractUserBets(contract, signer)
+            setUserBets(userBets)
 
-                const userFunds = await contractUserFunds(contract, signer)
-                setUserFunds(userFunds)
+            const userFunds = await contractUserFunds(contract, signer)
+            setUserFunds(userFunds)
 
-                setContractValues({
-                    balance,
-                    minBet,
-                    maxBet,
-                    totalBets,
-                    userBets,
-                    userFunds
-                })
-            } catch (error) {
-                console.log(error)
-            }finally{
-                setLoading(false)
-            }
+            setContractValues({
+                balance,
+                minBet,
+                maxBet,
+                totalBets,
+                userBets,
+                userFunds
+            })
+        } catch (error) {
+            console.log(error)
+        }finally{
+            setLoading(false)
         }
+    }
+
+    const setEvents = async () => {
+        await BetDoneEvent(getInfo)
+        await WithdrawFundsEvent(getInfo)
+    }
+
+    useEffect(()=>{
         getInfo()
+        setEvents()
     }, [wallet])
+
 
     if(loading){
         return(

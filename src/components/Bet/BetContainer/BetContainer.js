@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './BetContainer.css'
 import '../InfoContainer/InfoContainer.css'
 import '../../Login/Login.css'
@@ -7,6 +7,7 @@ import Categories from '../Categories/Categories';
 import Input from '../Input/Input';
 import Swal from 'sweetalert2'
 import { contractMakeBet, getContract } from '../../../controllers/contract'
+import { NumberGuessedEvent } from '../../../controllers/events'
 
 
 const BetContainer = ({wallet, contract}) => {
@@ -41,7 +42,6 @@ const BetContainer = ({wallet, contract}) => {
             return
         }
         setBetting(true)
-
         const { amount, number } = e.target
 
         setErrors({})
@@ -77,11 +77,12 @@ const BetContainer = ({wallet, contract}) => {
                 await contractMakeBet(contract, bet)
             } catch (error) {
                 console.log(error)
-            }finally{
-                setBetting(false)
+            } finally{
+                await NumberGuessedEvent(setBetting) //LISTEN IF USER WON
             }
+        }else{
+            setBetting(false)
         }
-        setBetting(false)
     }
 
 
