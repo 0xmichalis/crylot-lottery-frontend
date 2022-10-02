@@ -6,13 +6,20 @@ const WithdrawFunds = ({userFunds, liquidity}) => {
 
     const [withdrawing, setWithdrawing] = useState(false)
 
+    const withdraw = async () => {
+        setWithdrawing(true)
+        setTimeout(()=>{setWithdrawing(false)}, 2000)
+    }
+
     if(withdrawing){
         return(
-            <Loader />
+            <div className='withdraw__loader animate__animated animate__fadeIn'>
+                <Loader width={"20%"}/>
+            </div>
         )
     }
     return(
-        <div className='withdraw__button'>
+        <div className='withdraw__button animate__animated animate__fadeInUp' onClick={withdraw}>
             Withdraw funds
         </div>
     )

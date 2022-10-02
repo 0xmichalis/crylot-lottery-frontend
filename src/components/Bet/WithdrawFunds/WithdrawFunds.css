@@ -1,4 +1,4 @@
-.withdraw__button{
+.withdraw__button, .withdraw__loader{
     background:var(--dark);
     border: none; outline: none;
     position: fixed;
@@ -14,7 +14,10 @@
     transition: all .2s;
     cursor: pointer;
 }
-
+.withdraw__loader{
+    border: none;
+    box-shadow: var(--dark);
+}
 @media (min-width:600px){
     .withdraw__button:hover{
         transform: scale(.95);
