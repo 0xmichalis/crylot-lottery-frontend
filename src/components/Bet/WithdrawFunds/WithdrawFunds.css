@@ -29,7 +29,7 @@
 
 @media (max-width:600px){
     .withdraw__button, .withdraw__loader{
-        width: 60%;
+        width: 45%;
         left: 0;
         top: -40%;
         font-size: .8em;

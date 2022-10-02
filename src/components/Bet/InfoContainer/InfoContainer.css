@@ -21,7 +21,7 @@ hr{
 
 @media (max-width: 600px){
     .Container{
-        width: 70vw;
+        width: 80vw;
         font-size: .6em;
         padding: .8rem;
     }
