@@ -3,6 +3,7 @@ import { getContract, contractBalance, contractMaxBet, contractMinBet, contractT
 import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
 import Loader from '../../Loader/Loader'
+import WithdrawFunds from '../WithdrawFunds/WithdrawFunds';
 
 const InfoContainer = ({wallet, setContractValues}) => {
     
@@ -63,6 +64,7 @@ const InfoContainer = ({wallet, setContractValues}) => {
 
     return(
         <article className='animate__animated animate__fadeInDown'>
+            <WithdrawFunds userFunds={userFunds} liquidity={balance}/>
             <section className='Container'>
                 <InfoContract title="Contract liquidity" value={balance} loading={loading}/>
                 <InfoContract title="User funds" value={userFunds} loading={loading}/>
