@@ -21,7 +21,7 @@ const WithdrawFunds = ({userFunds, liquidity}) => {
             })
             return
         }
-        const {isConfirmed} = Swal.fire({
+        const {isConfirmed} = await Swal.fire({
             icon:'info',
             title:'Withdraw funds',
             html:`You are going to withdraw <strong>Ξ ${userFunds}</strong> to your wallet.`,
