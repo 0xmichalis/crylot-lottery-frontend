@@ -130,8 +130,7 @@ export const contractMakeBet = async (contract, bet) => {
 
         const value = ethers.utils.parseEther(amount)
 
-        let betTx = await contract.bet(number, categorie, {value})
-        await betTx.wait()
+        await contract.bet(number, categorie, {value, gasLimit:100000})
 
     } catch (error) {
         console.log(error)
