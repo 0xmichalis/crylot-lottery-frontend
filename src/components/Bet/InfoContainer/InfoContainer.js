@@ -6,7 +6,7 @@ import Loader from '../../Loader/Loader'
 import WithdrawFunds from '../WithdrawFunds/WithdrawFunds';
 import { BetDoneEvent, WithdrawFundsEvent } from '../../../controllers/events';
 
-const InfoContainer = ({wallet, setContractValues}) => {
+const InfoContainer = ({wallet, setContractValues, network}) => {
     
     const [loading, setLoading] = useState(true)
 
@@ -62,7 +62,7 @@ const InfoContainer = ({wallet, setContractValues}) => {
     useEffect(()=>{
         getInfo()
         setEvents()
-    }, [wallet])
+    }, [wallet, network])
 
 
     if(loading){
