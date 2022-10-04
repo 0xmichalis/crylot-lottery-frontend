@@ -50,3 +50,70 @@ export const checkIfWalletIsConnected = async () => {
 
     return account
 }
+
+export const isGoerliNetwork = () => {
+    if(!hasMetamask()) return
+
+    const { ethereum } = window;
+
+    return ethereum.networkVersion === '5'
+}
+
+export const changeNetwork = async (action) => {
+    if(!hasMetamask()) return
+
+    const { ethereum } = window;
+
+    try {
+        const {isConfirmed} = await Swal.fire({
+            icon:'info',
+            title:'Change to Goerli',
+            html:'The lottery is running on Goerli Testnet <br/> Would you like to change Network?',
+            confirmButtonText:'Change network',
+            confirmButtonColor:'var(--primary)',
+            showCancelButton:true,
+            reverseButtons:true
+        })
+
+        if(!isConfirmed) return
+
+        await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x5' }]
+        });
+        action(true)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const addNetwork = async () => {
+    if(!hasMetamask()) return
+
+    const { ethereum } = window;
+
+    const {isConfirmed} = await Swal.fire({
+        icon:'info',
+        title:'Add Goerli',
+        html:'The lottery is running on Goerli Testnet <br/> Would you like to add Goerli?',
+        confirmButtonText:'Change network',
+        confirmButtonColor:'var(--primary)',
+        showCancelButton:true,
+        reverseButtons:true
+    })
+    if(!isConfirmed) return
+    await ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [{
+            chainId: "0x5",
+            rpcUrls: ["https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"],
+            chainName: "Goerli test network",
+            nativeCurrency: {
+                name: "ETH",
+                symbol: "ETH",
+                decimals: 18
+            },
+            blockExplorerUrls: ["https://etherscan.com/"]
+        }]
+    });
+}
