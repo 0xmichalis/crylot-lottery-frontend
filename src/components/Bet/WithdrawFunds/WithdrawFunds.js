@@ -53,9 +53,10 @@ const WithdrawFunds = ({userFunds, liquidity}) => {
         )
     }
     return(
+        (userFunds > 0) &&
         <div className='withdraw__button animate__animated animate__fadeInUp' onClick={withdraw}>
             Withdraw funds
-        </div>
+        </div> 
     )
 }
 
