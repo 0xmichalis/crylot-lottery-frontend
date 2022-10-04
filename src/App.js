@@ -4,8 +4,8 @@ import Header from './components/Header/Header';
 import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
-import {requestAccount, checkIfWalletIsConnected} from './controllers/web3'
-import {contractBalance, contractLastBet} from './controllers/contract'
+import {requestAccount, checkIfWalletIsConnected, isGoerliNetwork, changeNetwork} from './controllers/web3'
+import {contractLastBet} from './controllers/contract'
 import InfoContainer from './components/Bet/InfoContainer/InfoContainer';
 import BetContainer from './components/Bet/BetContainer/BetContainer';
 
@@ -14,7 +14,7 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [walletAddress, setWalletAddress] = useState('')
   const [contract, setContractValues] = useState({})
-  
+  const [validNetwork, setValidNetwork] = useState(false)
   
   const login = async () => {
     const address = await requestAccount()
@@ -26,19 +26,31 @@ function App() {
     setWalletAddress(address)
   }
 
+  const validateNetwork = async () => {
+    const isInGoerli = isGoerliNetwork()
+    setValidNetwork(isInGoerli)
+    if(!isInGoerli) await changeNetwork(setValidNetwork)
+    return isInGoerli
+  }
+
   useEffect(()=>{
     const check = async () => {
+      console.log("valid net: ", validNetwork)
+      if(!validNetwork){
+        const allow = await validateNetwork()
+        if(!allow) return
+      }
+
       await Promise.allSettled([
         checkWallet(),
         new Promise(resolve=>setTimeout(resolve, 2000))
       ])
-      await contractLastBet(walletAddress)
       
       setLoading(false)
     }
     
     check()
-  }, [])
+  }, [validNetwork])
 
   if(loading){
     return(
@@ -55,7 +67,7 @@ function App() {
         : <Login action={login}/>
       }
       <main>
-        <InfoContainer wallet={walletAddress} setContractValues={setContractValues}/>
+        <InfoContainer wallet={walletAddress} network={validNetwork} setContractValues={setContractValues}/>
         <BetContainer wallet={walletAddress} contract={contract}/>
       </main>
     </>
