@@ -1,4 +1,4 @@
-export const ADDRESS = "0x94580cE99d16E71e80579F3729a3f68BE9bbE79b"
+export const ADDRESS = "0xDc76e98c1351Ba20E7E2617d937C2f33Ad9039dD"
 
 export const ABI = [
   {
@@ -242,62 +242,6 @@ export const ABI = [
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "betId",
-        "type": "uint256"
-      }
-    ],
-    "name": "getBet",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "uint256[]",
-            "name": "vrfNumber",
-            "type": "uint256[]"
-          },
-          {
-            "internalType": "bool",
-            "name": "exists",
-            "type": "bool"
-          },
-          {
-            "internalType": "bool",
-            "name": "fulfilled",
-            "type": "bool"
-          },
-          {
-            "internalType": "address",
-            "name": "_addr",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "number",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "category",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct Crylot.Bet",
-        "name": "",
-        "type": "tuple"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_addr",
         "type": "address"
@@ -309,56 +253,6 @@ export const ABI = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getLastBet",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "uint256[]",
-            "name": "vrfNumber",
-            "type": "uint256[]"
-          },
-          {
-            "internalType": "bool",
-            "name": "exists",
-            "type": "bool"
-          },
-          {
-            "internalType": "bool",
-            "name": "fulfilled",
-            "type": "bool"
-          },
-          {
-            "internalType": "address",
-            "name": "_addr",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "number",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "category",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct Crylot.Bet",
-        "name": "",
-        "type": "tuple"
       }
     ],
     "stateMutability": "view",
