@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { WalletContext } from '../../context/WalletContext'
 import './Header.css'
 
-const Header = ({wallet}) => {
+const Header = () => {
+
+    const walletContext = useContext(WalletContext)
 
     const extractMiddle = (str) => {
         const first = str.substr(0, 2);
@@ -9,9 +12,13 @@ const Header = ({wallet}) => {
         return first + "..." + second
     }
 
+    if(!walletContext.wallet){
+        return null
+    }
+    
     return(
         <header>
-            <p className='address animate__animated animate__fadeInUp'>{extractMiddle(wallet)}</p>
+            <p className='address animate__animated animate__fadeInUp'>{extractMiddle(walletContext.wallet)}</p>
         </header>
     )
 }
