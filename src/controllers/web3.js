@@ -117,3 +117,14 @@ export const addNetwork = async () => {
         }]
     });
 }
+
+export const listenIfLogout = (action) => {
+    if(!hasMetamask()) return
+
+    const { ethereum } = window;
+
+    ethereum.on('accountsChanged', (account) => {
+        // If user has locked/logout from MetaMask, this resets the accounts array to empty
+        action(account[0])
+    });
+}

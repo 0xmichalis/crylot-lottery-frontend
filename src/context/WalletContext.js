@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import {requestAccount, checkIfWalletIsConnected, isGoerliNetwork, changeNetwork} from '../controllers/web3'
+import {requestAccount, checkIfWalletIsConnected, isGoerliNetwork, changeNetwork, listenIfLogout} from '../controllers/web3'
 
 const WalletContext = createContext();
 
@@ -41,6 +41,7 @@ const WalletProvider = ({children}) => {
             checkConnection(),
             new Promise(resolve=>setTimeout(resolve, 2000))
           ])
+          listenIfLogout(setWallet)
           
           setConnecting(false)
         }
