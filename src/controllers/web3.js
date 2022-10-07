@@ -35,7 +35,7 @@ export const checkIfWalletIsConnected = async () => {
     if(!hasMetamask()) return
   
     const { ethereum } = window;
-  
+
     let account;
 
     try {
@@ -106,14 +106,14 @@ export const addNetwork = async () => {
         method: "wallet_addEthereumChain",
         params: [{
             chainId: "0x5",
-            rpcUrls: ["https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"],
+            rpcUrls: ["https://eth-goerli.alchemyapi.io/v2/"],
             chainName: "Goerli test network",
             nativeCurrency: {
                 name: "ETH",
                 symbol: "ETH",
                 decimals: 18
             },
-            blockExplorerUrls: ["https://etherscan.com/"]
+            blockExplorerUrls: ["https://goerli.etherscan.io/"]
         }]
     });
 }

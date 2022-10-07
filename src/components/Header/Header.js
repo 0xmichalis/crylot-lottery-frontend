@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { WalletContext } from '../../context/WalletContext'
 import './Header.css'
 
-const Header = ({wallet}) => {
+const Header = () => {
+
+    const walletContext = useContext(WalletContext)
+    const { wallet } = walletContext
 
     const extractMiddle = (str) => {
         const first = str.substr(0, 2);
         const second = str.substr(str.length - 5, str.length - 1)
         return first + "..." + second
+    }
+
+    if(!wallet){
+        return null
     }
 
     return(
