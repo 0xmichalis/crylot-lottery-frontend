@@ -8,6 +8,7 @@ const Header = () => {
     const { wallet } = walletContext
 
     const extractMiddle = (str) => {
+        if(!str) return
         const first = str.substr(0, 2);
         const second = str.substr(str.length - 5, str.length - 1)
         return first + "..." + second
