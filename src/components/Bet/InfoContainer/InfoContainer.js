@@ -17,52 +17,55 @@ const InfoContainer = ({wallet, setContractValues, network}) => {
     const [userBets, setUserBets] = useState(0)
     const [userFunds, setUserFunds] = useState(0)
 
-    const getInfo = async () => {
-        try {
-            const {contract, signer} = await getContract()
-
-            const balance = await contractBalance(contract)
-            setBalance(balance)
-
-            const minBet = await contractMinBet(contract)
-            setMinBet(minBet)
-
-            const maxBet = await contractMaxBet(contract)
-            setMaxBet(maxBet)
-
-            const totalBets = await contractTotalBets(contract)
-            setTotalBets(totalBets)
-
-            const userBets = await contractUserBets(contract, signer)
-            setUserBets(userBets)
-
-            const userFunds = await contractUserFunds(contract, signer)
-            setUserFunds(userFunds)
-
-            setContractValues({
-                balance,
-                minBet,
-                maxBet,
-                totalBets,
-                userBets,
-                userFunds
-            })
-        } catch (error) {
-            console.log(error)
-        }finally{
-            setLoading(false)
-        }
-    }
-
-    const setEvents = async () => {
-        await BetDoneEvent(getInfo)
-        await WithdrawFundsEvent(getInfo)
-    }
-
+    
+    
     useEffect(()=>{
-        getInfo()
-        setEvents()
-    }, [wallet, network])
+        const getInfo = async () => {
+            try {
+                const {contract, signer} = await getContract()
+    
+                const balance = await contractBalance(contract)
+                setBalance(balance)
+    
+                const minBet = await contractMinBet(contract)
+                setMinBet(minBet)
+    
+                const maxBet = await contractMaxBet(contract)
+                setMaxBet(maxBet)
+    
+                const totalBets = await contractTotalBets(contract)
+                setTotalBets(totalBets)
+    
+                const userBets = await contractUserBets(contract, signer)
+                setUserBets(userBets)
+    
+                const userFunds = await contractUserFunds(contract, signer)
+                setUserFunds(userFunds)
+    
+                setContractValues({
+                    balance,
+                    minBet,
+                    maxBet,
+                    totalBets,
+                    userBets,
+                    userFunds
+                })
+            } catch (error) {
+                console.log(error)
+            }finally{
+                setLoading(false)
+            }
+        }
+        const setEvents = async () => {
+            await BetDoneEvent(getInfo)
+            await WithdrawFundsEvent(getInfo)
+        }
+        const getData = async () => {
+            await getInfo()
+            await setEvents()
+        }
+        getData()
+    }, [wallet, network, setContractValues])
 
 
     if(loading){

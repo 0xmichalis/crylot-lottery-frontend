@@ -5,7 +5,6 @@ import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
 import {requestAccount, checkIfWalletIsConnected, isGoerliNetwork, changeNetwork} from './controllers/web3'
-import {contractLastBet} from './controllers/contract'
 import InfoContainer from './components/Bet/InfoContainer/InfoContainer';
 import BetContainer from './components/Bet/BetContainer/BetContainer';
 
