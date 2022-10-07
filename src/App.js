@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css'
 import Header from './components/Header/Header';
-import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 
 import InfoContainer from './components/Bet/InfoContainer/InfoContainer';
@@ -19,7 +18,7 @@ function App() {
       <>
       <Header/>
       <Login />
-      
+
       <main>
         <InfoContainer setContractValues={setContractValues}/>
         <BetContainer contract={contract}/>
