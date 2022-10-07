@@ -78,14 +78,14 @@ const InfoContainer = ({wallet, setContractValues, network}) => {
         <article className='animate__animated animate__fadeInDown'>
             <WithdrawFunds userFunds={userFunds} liquidity={balance}/>
             <section className='Container'>
-                <InfoContract title="Contract liquidity" value={balance || '*'} loading={loading}/>
-                <InfoContract title="User funds" value={userFunds || '*'} loading={loading}/>
+                <InfoContract title="Contract liquidity" value={balance} loading={loading}/>
+                <InfoContract title="User funds" value={userFunds} loading={loading}/>
                 <hr/>
-                <InfoContract title="Total bets" value={totalBets || '*'} loading={loading} noSymbol={true}/>
-                <InfoContract title="User bets" value={userBets || '*'} loading={loading} noSymbol={true}/>
+                <InfoContract title="Total bets" value={totalBets} loading={loading} noSymbol={true}/>
+                <InfoContract title="User bets" value={userBets} loading={loading} noSymbol={true}/>
                 <hr/>
-                <InfoContract title="Min bet" value={minBet || '*'} loading={loading}/>
-                <InfoContract title="Max bet" value={maxBet || '*'} loading={loading}/>
+                <InfoContract title="Min bet" value={minBet} loading={loading}/>
+                <InfoContract title="Max bet" value={maxBet} loading={loading}/>
             </section>
         </article>
     )
