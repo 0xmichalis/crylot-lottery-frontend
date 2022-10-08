@@ -34,6 +34,7 @@ body{
   background-size: 400% 400%;
   animation: updown 5s ease infinite;
   background: var(--dark);
+  overflow-x: hidden;
 }
 main{
   display: flex;
