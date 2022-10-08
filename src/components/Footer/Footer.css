@@ -1,0 +1,23 @@
+footer{
+    color: var(--light);
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1.4rem auto;
+    font-size: 1.4em;
+}
+
+footer a{
+    color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+footer a p{
+    margin-top: .2rem;
+    font-size: .8em;
+}

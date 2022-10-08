@@ -33,15 +33,13 @@ body{
   min-height: 100vh;
   background-size: 400% 400%;
   animation: updown 5s ease infinite;
-  overflow: hidden;
+  background: var(--dark);
 }
 main{
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  background: var(--dark);
-  min-height: 90vh;
   padding-top: 10vh;
 }
 strong{
@@ -56,7 +54,6 @@ strong{
 
   main{
     padding-top: 14vh;
-    min-height: 86vh;
   }
 }
 
