@@ -13,7 +13,7 @@ const Footer = () => {
         <footer>
             {
                 links.map(link=>
-                    <a className='repo' href={link.url} target="_blank">
+                    <a className='repo' href={link.url} target="_blank" rel="noreferrer">
                         <i className={`fab fa-${link.icon}`}/>
                         <p>{link.title}</p>
                     </a>
