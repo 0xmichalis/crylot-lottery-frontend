@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './BetContainer.css'
 import '../InfoContainer/InfoContainer.css'
 import '../../Login/Login.css'
@@ -8,10 +8,12 @@ import Input from '../Input/Input';
 import Swal from 'sweetalert2'
 import { contractMakeBet, getContract } from '../../../controllers/contract'
 import { NumberGuessedEvent } from '../../../controllers/events'
+import { WalletContext } from '../../../context/WalletContext'
 
-
-const BetContainer = ({wallet, contract}) => {
+const BetContainer = ({contract}) => {
     
+    const context = useContext(WalletContext)
+
     const [betting, setBetting] = useState(false)
 
     const [categorie, setCategorie] = useState(-1)
@@ -37,7 +39,7 @@ const BetContainer = ({wallet, contract}) => {
 
     const bet = async (e) => {
         e.preventDefault()
-        if(!wallet){
+        if(!context.wallet){
             setErrors({_type:"Please login"})
             return
         }
