@@ -1,4 +1,5 @@
 import React from 'react'
+import { ADDRESS } from '../../config/ContractConfig'
 import './Footer.css'
 
 const Footer = () => {
@@ -6,7 +7,8 @@ const Footer = () => {
     const links = [
         {title:'Contract', icon: 'github', url:'https://github.com/AlexT8/crylot-lottery-contracts'},
         {title:'FrontEnd', icon: 'github', url:'https://github.com/AlexT8/crylot-lottery-frontend'},
-        {title:'Twitter', icon: 'twitter', url:'https://twitter.com/Alexxtaboada'}
+        {title:'Twitter', icon: 'twitter', url:'https://twitter.com/Alexxtaboada'},
+        {title:'Etherscan', icon: 'ethereum', url:`https://goerli.etherscan.io/address/${ADDRESS}`}
     ]
 
     return(
