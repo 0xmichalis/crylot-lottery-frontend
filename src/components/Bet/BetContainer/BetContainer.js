@@ -79,6 +79,7 @@ const BetContainer = ({contract}) => {
                 await contractMakeBet(contract, bet)
             } catch (error) {
                 console.log(error)
+                setBetting(false)
             } finally{
                 await NumberGuessedEvent(setBetting) //LISTEN IF USER WON
             }
