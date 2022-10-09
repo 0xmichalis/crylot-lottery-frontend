@@ -46,12 +46,18 @@ input::placeholder {
     .form-controller{
         width: 90%;
     }
+    label{
+        font-size: 1.4em;
+    }
     input{
         border-bottom-width: 2px;
         margin-top: .2rem;
     }
     input::placeholder{
-        font-size: .7em;
+        font-size: 1em;
+    }
+    .error{
+        font-size: 1.2em;
     }
 }
 

@@ -50,11 +50,11 @@ strong{
 @media (max-width: 600px) {
   header{
     width: 100vw;
-    padding: .6rem .6rem;
+    padding: .4rem .6rem;
   }
 
   main{
-    padding-top: 14vh;
+    padding-top: 12vh;
   }
 }
 

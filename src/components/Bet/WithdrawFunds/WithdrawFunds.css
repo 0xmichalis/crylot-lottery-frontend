@@ -32,8 +32,9 @@
     .withdraw__button, .withdraw__loader{
         width: 45%;
         left: 0;
-        top: -40%;
-        font-size: .8em;
+        top: -35%;
+        font-size: .75em;
+        padding: .4rem 0;
     }
 
     .withdraw__button:active{

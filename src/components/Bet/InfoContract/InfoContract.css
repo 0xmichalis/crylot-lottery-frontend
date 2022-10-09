@@ -10,6 +10,7 @@
 
 @media (max-width: 600px) {
     .ContractInfo{
-        width: 45%;
+        width: 42%;
+        font-size: 1.2em;
     }
 }

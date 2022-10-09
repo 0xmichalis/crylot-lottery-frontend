@@ -30,6 +30,7 @@ form button{
     text-align: center;
     margin-top: 1vh !important;
     height: auto !important;
+    min-height: 2vh;
 }
 @media (min-width: 600px){
     form button:hover{
@@ -43,14 +44,19 @@ form button{
 
 @media (max-width:600px){
     .Bet.Container{
+        margin-top: 2.5vh;
         width: 80vw;
     }
 
+    .bet__title{
+        font-size: 2.4em;
+    }
+
     form button{
-        margin-top: 2vh;
+        margin-top: 3vh;
         font-size: 1.4em;
-        width: 70%;
-        padding: .8rem 0;
+        width: 50%;
+        padding: .6rem 0;
     }
 
     form button:active{

@@ -33,6 +33,10 @@ footer a p{
 }
 
 @media (max-width: 600px) {
+    footer{
+        width: 90%;
+        margin-top: 1.5rem;
+    }
     footer a p{
         font-size: .7em;
     }
