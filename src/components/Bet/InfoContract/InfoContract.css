@@ -1,7 +1,7 @@
 .ContractInfo{
     color: var(--light);
     width: 42%;
-    font-size: 1.4em;
+    font-size: 1em;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -125,7 +125,7 @@ const BetContainer = ({contract}) => {
                         <>
                         <br/>
                         <br/>
-                        <Loader width={"15%"}/>
+                        <Loader width={"10%"}/>
                         </>
                         :
                         <button>Bet!</button>

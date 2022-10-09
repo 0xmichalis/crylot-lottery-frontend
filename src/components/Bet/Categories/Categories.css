@@ -4,7 +4,7 @@
     align-items: center;
     color: var(--light);
     width: 65%;
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
 
 .categorie{
@@ -43,10 +43,10 @@
 }
 
 .categorie p{
-    font-size: 1.2em;
+    font-size: .9em;
 }
 .categorie__mutliplier{
-    font-size: 1em !important;
+    font-size: .8em !important;
 }
 
 @media (max-width:600px) {

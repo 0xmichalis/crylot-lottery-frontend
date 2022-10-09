@@ -1,6 +1,5 @@
 .Container{
-    width: 25vw;
-    min-height: 20vh;
+    width: 20vw;
     border-radius: var(--radius);
     border: 2px solid;
     animation: border_color 2s ease infinite;
@@ -10,13 +9,13 @@
     justify-content: space-evenly;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 1.4rem;
+    padding: 1rem;
 }
 hr{
     width: 100%;
     background-color: var(--light);
     animation: border_color 2s ease infinite;
-    margin: 1rem .4rem;
+    margin: .8rem .2rem;
 }
 
 @media (max-width: 600px){

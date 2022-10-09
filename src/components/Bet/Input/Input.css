@@ -8,7 +8,7 @@
 }
 label{
     color: var(--light);
-    font-size: 1.4em;
+    font-size: 1em;
     width: 100%;
 }
 input{
@@ -16,8 +16,8 @@ input{
     outline: none; border: none;
     border-bottom: 2px solid var(--primary);
     background: none;
-    border-bottom-width: 4px;
-    font-size: 1.4em;
+    border-bottom-width: 2px;
+    font-size: 1em;
     padding-bottom: .4rem;
     caret-color: var(--primary);
     text-align: center;
@@ -37,7 +37,7 @@ input::placeholder {
     height: 1vh;
     color: var(--red);
     margin-top: .2rem;
-    font-size: 1.2em;
+    font-size: .8em;
     font-weight: bold;
     width: 100%;
 }

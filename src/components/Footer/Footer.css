@@ -1,11 +1,11 @@
 footer{
     color: var(--light);
-    width: 80%;
+    width: 25%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 1.4rem auto;
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 footer a{
@@ -28,7 +28,6 @@ footer a p{
 
 @media (min-width: 600px) {
     footer{
-        width: 20%;
         margin: 2rem auto;
     }
 }
