@@ -14,7 +14,7 @@ const Categories = ({selectCategorie, categorieSelected}) => {
             {
                 categories.map(cat=>
                     <div onClick={()=>selectCategorie(cat.value)} key={cat.value}
-                    className={`categorie ${(categorieSelected == cat.value) && 'selected'}`}>
+                    className={`categorie ${(categorieSelected === cat.value) && 'selected'}`}>
                         <p className='categorie__title'>{cat.title}</p>
                         <p className='categorie__mutliplier'>{cat.multiplier}x</p>
                     </div>
