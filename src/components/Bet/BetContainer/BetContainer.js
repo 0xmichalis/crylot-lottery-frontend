@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 import { contractMakeBet, getContract } from '../../../controllers/contract'
 import { NumberGuessedEvent } from '../../../controllers/events'
 import { WalletContext } from '../../../context/WalletContext'
+import { toast } from 'react-toastify';
 
 const BetContainer = ({contract}) => {
     
@@ -82,12 +83,20 @@ const BetContainer = ({contract}) => {
                 setBetting(false)
             } finally{
                 await NumberGuessedEvent(setBetting) //LISTEN IF USER WON
+                toast.info('Waiting Chainlink Randomness...', {
+                    position: "top-left",
+                    autoClose: 150000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    theme:'dark',
+                });
             }
         }else{
             setBetting(false)
         }
     }
-
 
     return(
         <article className='animate__animated animate__jackInTheBox'>
@@ -97,7 +106,7 @@ const BetContainer = ({contract}) => {
                 categorieSelected={categorie}
                 selectCategorie={setCategorie}
                 />
-
+                
                 <form onSubmit={bet}>
                     <Input
                     type={categorie}

@@ -8,6 +8,9 @@ import BetContainer from './components/Bet/BetContainer/BetContainer';
 import { WalletProvider } from './context/WalletContext';
 import Footer from './components/Footer/Footer';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
 
   const [contract, setContractValues] = useState({})
@@ -26,6 +29,7 @@ function App() {
       </main>
       <Footer />
       </>
+      <ToastContainer />
     </WalletProvider>
   );
 }

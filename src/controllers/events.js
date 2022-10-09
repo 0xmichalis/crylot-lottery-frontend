@@ -1,5 +1,6 @@
 import { getContract } from './contract'
 import Swal from 'sweetalert2'
+import { toast } from 'react-toastify';
 
 export const BetDoneEvent = async (action) =>{
     const { contract } = await getContract();
@@ -30,6 +31,8 @@ export const NumberGuessedEvent = async (action) =>{
         console.log("My address-> " + address)
         console.log("Event address-> "+ addr)
         console.log("Guessed-> "+ guessed)
+
+        toast.dismiss()
 
         let alert = {};
         if((address === addr) && guessed){
