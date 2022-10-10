@@ -39,7 +39,7 @@ const WalletProvider = ({children}) => {
     
           await Promise.allSettled([
             checkConnection(),
-            new Promise(resolve=>setTimeout(resolve, 2000))
+            new Promise(resolve=>setTimeout(resolve, 600))
           ])
           listenIfLogout(setWallet)
           
