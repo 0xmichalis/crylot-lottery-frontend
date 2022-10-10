@@ -18,7 +18,7 @@ const Input = ({label, type, inputMessage, name, error}) => {
             placeholder={`${inputMessage} ${categories[type] || ''}`}
             name={name} step="any"/>
 
-            <p className='error'>{error}</p>
+            <p className='error animate__animated animate__fadeInLeft'>{error}</p>
         </div>
     )
 }

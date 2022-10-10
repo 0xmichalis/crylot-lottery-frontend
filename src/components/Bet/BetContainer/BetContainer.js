@@ -131,7 +131,7 @@ const BetContainer = ({contract}) => {
                         <button>Bet!</button>
                     }
 
-                    <p className='error type_error'>
+                    <p className='error type_error animate__animated animate__fadeInUp'>
                         {errors._type}
                     </p>
                 </form>
