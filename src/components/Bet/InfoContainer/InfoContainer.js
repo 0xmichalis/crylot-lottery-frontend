@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getContract, contractBalance, contractMaxBet, contractMinBet, contractTotalBets, contractUserBets, contractUserFunds } from '../../../controllers/contract';
 import InfoContract from '../InfoContract/InfoContract';
 import './InfoContainer.css'
 import Loader from '../../Loader/Loader'
 import WithdrawFunds from '../WithdrawFunds/WithdrawFunds';
 import { BetDoneEvent, WithdrawFundsEvent } from '../../../controllers/events';
+import { WalletContext } from '../../../context/WalletContext';
 
-const InfoContainer = ({wallet, setContractValues, network}) => {
+const InfoContainer = ({setContractValues}) => {
     
+    const context = useContext(WalletContext)
+    const { wallet } = context
+
     const [loading, setLoading] = useState(true)
 
     const [balance, setBalance] = useState(0)
@@ -65,7 +69,7 @@ const InfoContainer = ({wallet, setContractValues, network}) => {
             await setEvents()
         }
         getData()
-    }, [wallet, network, setContractValues])
+    }, [wallet, setContractValues])
 
 
     if(loading){
