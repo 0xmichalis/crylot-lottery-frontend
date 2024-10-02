@@ -51,12 +51,12 @@ export const checkIfWalletIsConnected = async () => {
     return account
 }
 
-export const isGoerliNetwork = () => {
+export const isBaseSepoliaNetwork = () => {
     if(!hasMetamask()) return
 
     const { ethereum } = window;
 
-    return ethereum.networkVersion === '5'
+    return ethereum.networkVersion === '84532'
 }
 
 export const changeNetwork = async (action) => {
@@ -67,8 +67,8 @@ export const changeNetwork = async (action) => {
     try {
         const {isConfirmed} = await Swal.fire({
             icon:'info',
-            title:'Change to Goerli',
-            html:'The lottery is running on Goerli Testnet <br/> Would you like to change Network?',
+            title:'Change to Base Sepolia',
+            html:'The lottery is running on Base Sepolia Testnet <br/> Would you like to change Network?',
             confirmButtonText:'Change network',
             confirmButtonColor:'var(--primary)',
             showCancelButton:true,
@@ -79,7 +79,7 @@ export const changeNetwork = async (action) => {
 
         await ethereum.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x5' }]
+            params: [{ chainId: '0x14A34' }]
         });
         action(true)
     } catch (error) {
@@ -94,8 +94,8 @@ export const addNetwork = async () => {
 
     const {isConfirmed} = await Swal.fire({
         icon:'info',
-        title:'Add Goerli',
-        html:'The lottery is running on Goerli Testnet <br/> Would you like to add Goerli?',
+        title:'Add Base Sepolia',
+        html:'The lottery is running on Base Sepolia Testnet <br/> Would you like to add Base Sepolia?',
         confirmButtonText:'Change network',
         confirmButtonColor:'var(--primary)',
         showCancelButton:true,
@@ -105,15 +105,15 @@ export const addNetwork = async () => {
     await ethereum.request({
         method: "wallet_addEthereumChain",
         params: [{
-            chainId: "0x5",
-            rpcUrls: ["https://eth-goerli.alchemyapi.io/v2/"],
-            chainName: "Goerli test network",
+            chainId: "0x14A34",
+            rpcUrls: ["https://sepolia.base.org"],
+            chainName: "Base Sepolia",
             nativeCurrency: {
                 name: "ETH",
                 symbol: "ETH",
                 decimals: 18
             },
-            blockExplorerUrls: ["https://goerli.etherscan.io/"]
+            blockExplorerUrls: ["https://sepolia.basescan.org/"]
         }]
     });
 }

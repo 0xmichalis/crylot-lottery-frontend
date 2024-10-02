@@ -5,10 +5,9 @@ import './Footer.css'
 const Footer = () => {
 
     const links = [
-        {title:'Contract', icon: 'github', url:'https://github.com/AlexT8/crylot-lottery-contracts'},
-        {title:'FrontEnd', icon: 'github', url:'https://github.com/AlexT8/crylot-lottery-frontend'},
-        {title:'Twitter', icon: 'twitter', url:'https://twitter.com/Alexxtaboada'},
-        {title:'Etherscan', icon: 'ethereum', url:`https://goerli.etherscan.io/address/${ADDRESS}`}
+        {title:'Contract', icon: 'github', url:'https://github.com/0xmichalis/crylot-lottery-contracts'},
+        {title:'FrontEnd', icon: 'github', url:'https://github.com/0xmichalis/crylot-lottery-frontend'},
+        {title:'Basescan', icon: 'ethereum', url:`https://sepolia.basescan.org/address/${ADDRESS}`}
     ]
 
     return(

@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import {requestAccount, checkIfWalletIsConnected, isGoerliNetwork, changeNetwork, listenIfLogout} from '../controllers/web3'
+import {requestAccount, checkIfWalletIsConnected, isBaseSepoliaNetwork, changeNetwork, listenIfLogout} from '../controllers/web3'
 
 const WalletContext = createContext();
 
@@ -23,10 +23,10 @@ const WalletProvider = ({children}) => {
     }
 
     const checkNetwork = async () => {
-        const isInGoerli = isGoerliNetwork()
-        setValidNetwork(isInGoerli)
-        if(!isInGoerli) await changeNetwork(setValidNetwork)
-        return isInGoerli
+        const isInBaseSepolia = isBaseSepoliaNetwork()
+        setValidNetwork(isInBaseSepolia)
+        if(!isInBaseSepolia) await changeNetwork(setValidNetwork)
+        return isInBaseSepolia
     }
 
     useEffect(()=>{

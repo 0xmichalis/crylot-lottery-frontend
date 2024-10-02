@@ -1,4 +1,4 @@
-export const ADDRESS = "0xed0953e604F13538728C3f0207aA918aA1EE8972"
+export const ADDRESS = "0xFd874e2051eE72c9676d81cE6af38273A15A1167"
 
 export const ABI = [
   {
@@ -10,7 +10,7 @@ export const ABI = [
       },
       {
         "internalType": "address",
-        "name": "_vrfConsumer",
+        "name": "_vrfCoordinator",
         "type": "address"
       },
       {
